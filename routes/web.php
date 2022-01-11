@@ -19,3 +19,4 @@ Route::get('login', "GpaController@login")->name("login");
 Route::post('login', "GpaController@loginCheck")->name("login.auth");
 
 Route::get("cgpa", "GpaController@cgpa")->name("cgpa");
+Route::post("cgpa", "GpaController@cgpaStore")->name("result.store");

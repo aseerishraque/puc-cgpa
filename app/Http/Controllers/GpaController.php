@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Result;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -23,6 +24,20 @@ class GpaController extends Controller
                 'message' => "Username/Password Incorrect!"
             ]);
         }
+    }
+
+    public function cgpaStore(Request $request)
+    {
+        $gpa = new Result();
+        $gpa->semester = $request->semester;
+        $gpa->user_id = session()->get("user_id");
+        $gpa->course = $request->course;
+        $gpa->marks = $request->marks;
+        $gpa->credit = $request->credit;
+        $gpa->gpa = $request->gpa;
+        $gpa->save();
+
+        return redirect()->route('cgpa');
     }
 
     public function cgpa(){
